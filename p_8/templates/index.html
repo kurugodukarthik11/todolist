@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><!DOCTYPE html>
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8">
+        <title>INDEX PAGE</title>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <style>
+        .l {
+            text-align: left;
+        }
+
+        .r {
+            text-align: right;
+        }
+
+        #textboxid {
+            width: 1000px;
+            font-size: 14pt;
+        }
+
+        .btn-success{
+            width:100px;
+        }
+
+        .input-group-text{
+            width:180px;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="container">
+        <h1 align="center">Todo List</h1><br>
+        <form action="" method="POST">
+            <div class="input-group mb-3" align="center">
+                <span class="input-group-text" id="basic-addon1">Todo</span>
+                <label class="bar">
+                    <input type="text" class="form-control" id="textboxid" name="work_name" placeholder="Add your work name here">
+                </label>
+                <button type="submit" class="btn btn-success">Add</button>
+                {% csrf_token %}
+            </div>
+        </form>
+        <h3 align="center">Your Todo List</h3>
+        <ul class="list-group">
+            {% for todo in todos reversed %}
+                <div class="box" align="center">
+                    <li class="list-group-item">
+                        <div class="l">
+                            {{ todo.work }}
+                        </div>
+                        <div class="r">
+                        <span class="close"><a href="delete/{{ todo.id }}">
+                        <button type="button" class="btn btn-danger">Delete</button></a>
+                        </span></div>
+                    </li>
+                </div>
+
+            {% endfor %}
+        </ul>
+</div>
+</body>
